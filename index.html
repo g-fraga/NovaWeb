@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✏️ SEO: título da aba e descrição exibida no Google -->
+  <title>NovaWeb Studio · Sites e Web Apps de Alta Performance</title>
+  <meta name="description" content="Criamos sites, landing pages, e-commerces e web apps ultrarrápidos, com design limpo e foco total em conversão." />
+
+  <!-- Fonte: Plus Jakarta Sans (para trocar, altere aqui e em fontFamily, mais abaixo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Ícones: Font Awesome 6 (catálogo completo em https://fontawesome.com/icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    /* ==============================================================
+       🎨 PALETA DE CORES — altere os valores abaixo e o site inteiro
+       se adapta automaticamente.
+         canvas → cor de fundo da página (ex: #FAF9F6 ou #F3F4F6)
+         brand  → azul sereno (botões principais e destaques)
+         sage   → verde sálvia (status, métricas positivas)
+       ============================================================== */
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F8FAFC',
+            brand: { 50: '#EFF6FF', 100: '#DBEAFE', 500: '#3B82F6', 600: '#2563EB' },
+            sage:  { 50: '#ECFDF5', 100: '#D1FAE5', 500: '#10B981', 600: '#059669' },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            soft:  '0 1px 2px rgba(15,23,42,.04), 0 8px 24px -10px rgba(15,23,42,.10)',
+            float: '0 24px 60px -24px rgba(15,23,42,.28)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Flutuação suave dos cartões sobre o mockup */
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .float-a { animation: float 6s ease-in-out infinite; }
+    .float-b { animation: float 6s ease-in-out 1.5s infinite; }
+
+    /* Preenchimento animado do medidor de PageSpeed (97.4 = circunferência do círculo) */
+    @keyframes gauge { from { stroke-dashoffset: 97.4; } to { stroke-dashoffset: 0; } }
+    .gauge { stroke-dasharray: 97.4; animation: gauge 1.6s cubic-bezier(.22, 1, .36, 1) .3s both; }
+
+    /* Acessibilidade: desliga animações para quem prefere menos movimento */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="bg-canvas font-sans text-slate-600 antialiased">
+<div class="relative isolate min-h-screen overflow-x-hidden">
+
+  <!-- Fundo decorativo: manchas de cor bem suaves (apague este bloco para um fundo liso) -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-brand-100 opacity-60 blur-3xl"></div>
+    <div class="absolute -right-32 top-1/3 h-[28rem] w-[28rem] rounded-full bg-sage-100 opacity-50 blur-3xl"></div>
+  </div>
+
+  <!-- ======================= HEADER / NAVBAR ======================= -->
+  <header class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-5 sm:px-8">
+    <div class="flex items-center gap-3">
+
+      <!-- ✏️ LOGO: troque o ícone e o nome, ou use uma imagem:
+           <img src="logo.svg" alt="Sua Marca" class="h-9"> -->
+      <a href="#" class="flex items-center gap-2.5 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500" aria-label="NovaWeb Studio — início">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-sage-500 text-white shadow-soft">
+          <i class="fa-solid fa-code text-sm"></i>
+        </span>
+        <span class="text-lg font-extrabold tracking-tight text-slate-900">NovaWeb<span class="text-brand-500">.</span></span>
+      </a>
+
+      <!-- Badge de disponibilidade com pulso suave (✏️ edite o texto aqui) -->
+      <span class="inline-flex items-center gap-2 rounded-full border border-sage-100 bg-sage-50 px-3 py-1 text-xs font-semibold text-sage-600">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sage-500 opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-sage-500"></span>
+        </span>
+        <span class="sm:hidden">Disponível</span>
+        <span class="hidden sm:inline">Aceitando novos projetos</span>
+      </span>
+    </div>
+
+    <!-- ✏️ WHATSAPP: troque 55 pelo seu número (DDI + DDD + número, só dígitos)
+         e o texto após "?text=" pela mensagem inicial desejada -->
+    <a href="https://wa.me/5548992074555?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20um%20projeto."
+       target="_blank" rel="noopener"
+       class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:px-4">
+      <i class="fa-brands fa-whatsapp text-base"></i>
+      <span class="hidden sm:inline">Falar no WhatsApp</span>
+    </a>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-5 sm:px-8">
+
+    <!-- ======================= HERO ======================= -->
+    <section class="grid items-center gap-12 pb-12 pt-4 lg:grid-cols-2 lg:pt-8">
+
+      <!-- Coluna de texto -->
+      <div>
+        <!-- ✏️ Etiqueta acima do título -->
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-600 shadow-soft ring-1 ring-slate-200/70">
+          <i class="fa-solid fa-bolt"></i> Sites &amp; Web Apps sob medida
+        </p>
+
+        <!-- ✏️ TÍTULO PRINCIPAL -->
+        <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 sm:text-5xl">
+          Sites rápidos que
+          <span class="bg-gradient-to-r from-brand-500 to-sage-500 bg-clip-text text-transparent">transformam visitas em vendas.</span>
+        </h1>
+
+        <!-- ✏️ SUBTÍTULO -->
+        <p class="mt-5 max-w-lg text-base leading-relaxed text-slate-500 sm:text-lg">
+          Design limpo, nota máxima de performance e foco total em conversão — entregue em dias, não em semanas.
+        </p>
+
+        <!-- Botões de ação -->
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <!-- ✏️ ORÇAMENTO: mesmo número do WhatsApp, com outra mensagem pronta -->
+          <a href="https://wa.me/5548992074555?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento."
+             target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-brand-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+            Orçamento Rápido <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+          <!-- ✏️ PROJETOS: troque "#servicos" pelo link do seu portfólio -->
+          </a>
+        </div>
+
+        <!-- Prova social (✏️ troque as fotos e os números) -->
+        <div class="mt-8 flex items-center gap-4">
+          <div class="flex -space-x-2">
+            <img class="h-9 w-9 rounded-full object-cover ring-2 ring-white" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=96&h=96&q=80" alt="" />
+            <img class="h-9 w-9 rounded-full object-cover ring-2 ring-white" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&h=96&q=80" alt="" />
+            <img class="h-9 w-9 rounded-full object-cover ring-2 ring-white" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=96&h=96&q=80" alt="" />
+          </div>
+          <div class="text-sm">
+            <div class="flex gap-0.5 text-[11px] text-amber-400" aria-label="Avaliação 5 de 5">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="mt-0.5"><strong class="text-slate-900">5/5</strong>   +120 projetos entregues</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna visual: mockup do navegador -->
+      <div class="relative mx-auto w-full max-w-xl lg:max-w-none">
+        <div class="overflow-hidden rounded-2xl bg-white shadow-float ring-1 ring-slate-200/70">
+          <!-- Barra do navegador -->
+          <div class="flex items-center gap-1.5 border-b border-slate-100 px-4 py-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-rose-300"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-amber-300"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+            <!-- ✏️ Endereço exibido na barra -->
+            <div class="ml-3 flex flex-1 items-center gap-2 rounded-lg bg-slate-50 px-3 py-1.5 text-xs text-slate-400">
+              <i class="fa-solid fa-lock text-[10px] text-sage-500"></i> seusite.com.br
+            </div>
+          </div>
+          <!-- ✏️ IMAGEM DO MOCKUP: troque a URL por um print do seu melhor projeto (proporção 16:10) -->
+          <img src="Gemini_Generated_Image_td3chytd3chytd3c.jpg"
+               alt="Painel de análise de dados com gráficos em tema claro"
+               class="aspect-[16/10] w-full bg-slate-100 object-cover" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ GRID 3-EM-1: SERVIÇOS + MÉTRICAS ============ -->
+    <section id="servicos" class="grid gap-4 pb-10 pt-6 lg:grid-cols-3">
+      <h2 class="sr-only">Serviços</h2>
+
+      <!-- Card 1 (✏️ imagem, ícone, título, descrição e métrica) -->
+      <article class="group flex items-center gap-4 rounded-2xl bg-white p-3 pr-4 shadow-soft ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-float">
+        <div class="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+          <img src="5212a7439f684b21b8f421120ebecf1e.jpg"
+               alt="Wireframes de interface sobre a mesa" loading="lazy"
+               class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        </div>
+        <div class="min-w-0">
+          <h3 class="text-sm font-bold text-slate-900">Design e Criação de Experiências Web</h3>
+          <p class="mt-0.5 text-xs leading-relaxed text-slate-500">Criação de interfaces memoráveis, focadas no usuário e em conversão.</p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="group flex items-center gap-4 rounded-2xl bg-white p-3 pr-4 shadow-soft ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-float">
+        <div class="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+          <img src="coding-workstation-setup-stockcake.jpg"
+               alt="Compra online feita pelo notebook" loading="lazy"
+               class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        </div>
+        <div class="min-w-0">
+          <h3 class="text-sm font-bold text-slate-900">Plataformas SaaS e Sistemas Web Sob Medida</h3>
+          <p class="mt-0.5 text-xs leading-relaxed text-slate-500">Soluções robustas e escaláveis, do front-end ao back-end.</p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="group flex items-center gap-4 rounded-2xl bg-white p-3 pr-4 shadow-soft ring-1 ring-slate-200/70 transition hover:-translate-y-0.5 hover:shadow-float">
+        <div class="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+          <img src="custom-dashboard.webp"
+               alt="Relatório de métricas de tráfego no notebook" loading="lazy"
+               class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        </div>
+        <div class="min-w-0">
+          <h3 class="text-sm font-bold text-slate-900">Growth Marketing e Gestão de Performance</h3>
+          <p class="mt-0.5 text-xs leading-relaxed text-slate-500">Impulsione sua visibilidade online e maximize seu ROI.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER / CHAMADA FINAL INTEGRADA ============ -->
+  <footer class="mx-auto max-w-6xl px-5 pb-8 sm:px-8">
+    <div class="flex flex-col items-center justify-between gap-4 rounded-2xl bg-white px-6 py-5 text-center shadow-soft ring-1 ring-slate-200/70 md:flex-row md:text-left">
+      <!-- ✏️ Frase de chamada final -->
+      <p class="text-sm font-semibold text-slate-900">
+        Vamos tirar seu projeto do papel?
+        <span class="block font-normal text-slate-500 sm:inline"> Respondemos em até 20 minutos</p> </span>
+      </p>
+
+      <!-- ✏️ LINKS DE CONTATO E REDES: troque cada href pelos seus endereços -->
+      <nav aria-label="Contato e redes sociais" class="flex items-center gap-2">
+        <a href="mailto:contato@seudominio.com.br" aria-label="E-mail"
+           class="grid h-10 w-10 place-items-center rounded-xl bg-slate-50 text-slate-500 ring-1 ring-slate-200/70 transition hover:bg-brand-50 hover:text-brand-600">
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+        <a href="https://instagram.com/seuperfil" target="_blank" rel="noopener" aria-label="Instagram"
+           class="grid h-10 w-10 place-items-center rounded-xl bg-slate-50 text-slate-500 ring-1 ring-slate-200/70 transition hover:bg-brand-50 hover:text-brand-600">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://github.com/seuperfil" target="_blank" rel="noopener" aria-label="GitHub"
+           class="grid h-10 w-10 place-items-center rounded-xl bg-slate-50 text-slate-500 ring-1 ring-slate-200/70 transition hover:bg-brand-50 hover:text-brand-600">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </nav>
+    </div>
+
+    <!-- ✏️ Copyright (o ano é atualizado automaticamente pelo script abaixo) -->
+    <p class="mt-5 text-center text-xs text-slate-400">
+      © <span id="ano">2026</span> NovaWeb Studio · Todos os direitos reservados.
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  // Atualiza o ano do copyright automaticamente
+  document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
